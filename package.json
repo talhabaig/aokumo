@@ -1,4 +1,6 @@
 {
+  "name": "materio-vuejs-admin-template",
+  "version": "v2.2.0",
   "private": true,
   "scripts": {
     "dev": "next",

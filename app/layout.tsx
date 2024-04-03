@@ -5,6 +5,7 @@ import { Nav } from "./components/layouts/Header";
 
 import "./styles/globals.css";
 import "./styles/main.scss";
+import './styles/fonts/font.css'
 import Sidebar from "./components/layouts/Sidebar";
 
 interface Props {
@@ -16,7 +17,7 @@ export default function RootLayout({ children }: Props) {
     <StoreProvider>
       <html lang="en">
         <body>
-          <section className="grid grid-cols-[260px_1fr] h-screen">
+          <section className="grid grid-cols-[auto_1fr] h-screen">
             <Sidebar />
             <div className="bg-gray-400">
             <Nav />

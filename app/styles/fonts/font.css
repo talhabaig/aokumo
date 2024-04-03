@@ -1,0 +1,42 @@
+@font-face {
+    font-family: 'proxima-nova';
+    font-weight: 300; /* thin */
+    src: url('./Mark-Simonson-Proxima-Nova-Thin.otf') format('opentype'); /* OTF format */
+  }
+  
+  @font-face {
+    font-family: 'proxima-nova';
+    font-weight: 400; /* regular */
+    src: url('./Mark-Simonson-Proxima-Nova-Light.otf') format('opentype'); /* OTF format */
+  }
+  
+  @font-face {
+    font-family: 'proxima-nova';
+    font-weight: 500; /* medium */
+    src: url('./Mark-Simonson-Proxima-Nova-Regular.otf') format('opentype'); /* OTF format */
+  }
+  
+  @font-face {
+    font-family: 'proxima-nova';
+    font-weight: 600; /* Semi Bold */
+    src: url('./Mark\ Simonson-Proxima-Nova-Semibold.otf') format('opentype'); /* OTF format */
+  }
+  
+  @font-face {
+    font-family: 'proxima-nova';
+    font-weight: 700; /* bold */
+    src: url('./Mark-Simonson-Proxima-Nova-Bold.otf') format('opentype'); /* OTF format */
+  }
+
+  @font-face {
+    font-family: 'proxima-nova';
+    font-weight: 800; /* Extra bold */
+    src: url('./Mark-Simonson-Proxima-Nova-Extrabold.otf') format('opentype'); /* OTF format */
+  }
+
+
+body {
+    font-family: 'proxima-nova', system-ui, -apple-system; /* Use your font as the default font */
+    font-weight: 400; /* Set default font weight to 400 (normal) */
+  }
+  

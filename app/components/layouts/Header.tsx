@@ -1,15 +1,16 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+// import Link from "next/link";
+// import { usePathname } from "next/navigation";
 
 
 export const Nav = () => {
-  const pathname = usePathname();
+  // const pathname = usePathname();
 
   return (
-    <header className="bg-white h-[60px]">
-      header
+    <header className="bg-slate-600 h-[60px]">
+      {/* header */}
+       <div className="text-[16px] font-semibold text-[#8D9FB7]">header</div>
       {/* <Link
         className={`${styles.link} ${pathname === "/" ? styles.active : ""}`}
         href="/"
