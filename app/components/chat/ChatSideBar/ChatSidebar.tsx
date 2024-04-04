@@ -1,9 +1,10 @@
 "use client";
 
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
 import ChatSidebarHeader from "./ChatSidebarHeader";
 import FavoriteChats from "./FavoriteChats";
 import MyChats from "./MyChats";
+import RecentTeamChats from "./RecentTeamChats";
 
 interface Props {
   setOpen: Dispatch<SetStateAction<boolean>>;
@@ -11,6 +12,16 @@ interface Props {
 }
 
 export default function ChatSidebar({ open, setOpen }: Props) {
+  const [isOpen, setIsOpen] = useState(open);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setIsOpen(open);
+    }, 150);
+
+    return () => clearTimeout(timeoutId); // Clear the timeout when the component unmounts or `open` changes
+  }, [open]);
+
   return (
     <div
       className="bg-light-blue overflow-hidden transition-all duration-500 px-[20px] py-[15px]"
@@ -19,8 +30,8 @@ export default function ChatSidebar({ open, setOpen }: Props) {
       <div className="flex flex-col" onClick={() => setOpen((value) => !value)}>
         <ChatSidebarHeader open={open} />
 
-        {open && (
-          <div className="mt-[40px]">
+        {isOpen && (
+          <div className="mt-[40px] px-2">
             <span className="font-bold block text-light-gray tracking-[1px] mb-[15px]">
               Favorite Chats
             </span>
@@ -32,6 +43,12 @@ export default function ChatSidebar({ open, setOpen }: Props) {
             </span>
             {[0, 1, 2, 3].map((_, index) => (
               <MyChats key={index} />
+            ))}
+            <span className="font-bold block text-light-gray tracking-[1px] mt-[35px] mb-[15px]">
+              Recent Team Chats
+            </span>
+            {[0, 1, 2, 3].map((_, index) => (
+              <RecentTeamChats index={index} key={index} />
             ))}
           </div>
         )}

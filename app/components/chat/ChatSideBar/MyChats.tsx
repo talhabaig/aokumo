@@ -1,3 +1,5 @@
+'use client'
+
 import { Archive, Star } from "../../ui-icons";
 
 export default function MyChats() {
@@ -7,11 +9,17 @@ export default function MyChats() {
         <span className="font-bold text-[18px] text-navy-blue max-w-[80%] truncate">
           Lorem ipsum dolor sit amet dolor
         </span>
-        <Archive className="hidden group-hover:block" />
-        <Star active={false} />
+        <span title="Archive" className="hidden group-hover:block">
+          <Archive />
+        </span>
+        <span title="Favorite">
+          <Star active={false} />
+        </span>
       </div>
 
-      <span className="text-[13px] font-medium text-gray">8 mins ago</span>
+      <span className="text-[13px] font-medium text-gray opacity-[.8]">
+        {60} mins ago
+      </span>
     </div>
   );
 }

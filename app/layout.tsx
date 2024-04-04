@@ -5,7 +5,7 @@ import { Nav } from "./components/layouts/Header";
 
 import "./styles/globals.css";
 import "./styles/main.scss";
-import './styles/fonts/font.css'
+import "./styles/fonts/font.css";
 import Sidebar from "./components/layouts/Sidebar";
 
 interface Props {
@@ -19,9 +19,11 @@ export default function RootLayout({ children }: Props) {
         <body>
           <section className="grid grid-cols-[auto_1fr] h-screen">
             <Sidebar />
-            <div className="bg-gray-400">
-            <Nav />
-            <main>{children}</main>
+            <div className="">
+              <Nav />
+              <main className="h-[calc(100vh-60px)] overflow-auto">
+                {children}
+              </main>
             </div>
           </section>
         </body>
