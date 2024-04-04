@@ -11,6 +11,10 @@ export default function Sidebar() {
 
   const [open, setOpen] = useState(true);
 
+  function setOpenState(state: boolean) {
+    setOpen(state);
+  }
+
   useEffect(() => {
     setOpen(isChatPage);
   }, [pathname]);
@@ -31,9 +35,7 @@ export default function Sidebar() {
         </Link>
         <Dashboard />
       </div>
-      {isChatPage && (
-        <ChatSidebar open={open} setOpen={(value) => setOpen(value)} />
-      )}
+      {isChatPage && <ChatSidebar open={open} setOpenState={setOpenState} />}
     </div>
   );
 }

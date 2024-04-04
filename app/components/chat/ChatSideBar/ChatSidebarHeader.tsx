@@ -5,21 +5,27 @@ interface Props {
 export default function ChatSidebarHeader({ open }: Props) {
   return (
     <div
-      className={`grid grid-cols-[1fr_50px] gap-4 place-items-center ${
-        !open && "!grid-cols-1"
+      className={`grid grid-cols-[1fr_50px] gap-4 h-[70px] bg-light-blue place-items-end z-10 !justify-end ${
+        open && "fixed"
       }`}
     >
-      {open && (
-        <div className="relative w-full">
-          <input
-            className="border-none outline-none w-full h-[50px] p-[10px] !pl-[40px] bg-white rounded-[15px] drop-shadow-2"
-            placeholder="Search Chats"
-            type="text"
-          />
-          <Search className="absolute top-[50%] translate-y-[-50%] left-[14px]" />
-        </div>
-      )}
-      <button className="w-[50px] h-[50px] ml-auto flex items-center justify-center rounded-[15px] bg-primary-blue drop-shadow-2">
+      <div
+        className={`${
+          open && "!w-[232px]"
+        } relative w-0 overflow-hidden transition-all duration-500 drop-shadow-2`}
+      >
+        <input
+          className={`border-none outline-none w-full h-[50px] p-[10px] !pl-[40px] bg-white rounded-[15px]`}
+          placeholder="Search Chats"
+          type="text"
+        />
+        <Search className="absolute top-[50%] translate-y-[-50%] left-[14px]" />
+      </div>
+      <button
+        title="New Chat"
+        type="button"
+        className="w-[50px] h-[50px] flex items-center justify-center rounded-[15px] bg-primary-blue drop-shadow-2"
+      >
         <Edit />
       </button>
     </div>

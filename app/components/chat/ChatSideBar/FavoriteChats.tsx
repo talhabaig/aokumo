@@ -12,7 +12,7 @@ export default function FavoriteChats() {
           <Archive />
         </span>
         <span title="Favorite">
-          <Star active={false} />
+          <Star active={true} />
         </span>
       </div>
 

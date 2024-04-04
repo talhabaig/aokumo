@@ -1,17 +1,18 @@
 "use client";
 
-import { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import ChatSidebarHeader from "./ChatSidebarHeader";
 import FavoriteChats from "./FavoriteChats";
 import MyChats from "./MyChats";
 import RecentTeamChats from "./RecentTeamChats";
+import { ExpandCircle } from "../../ui-icons";
 
 interface Props {
-  setOpen: Dispatch<SetStateAction<boolean>>;
+  setOpenState: (state: boolean) => void;
   open: boolean;
 }
 
-export default function ChatSidebar({ open, setOpen }: Props) {
+export default function ChatSidebar({ open, setOpenState }: Props) {
   const [isOpen, setIsOpen] = useState(open);
 
   useEffect(() => {
@@ -24,18 +25,18 @@ export default function ChatSidebar({ open, setOpen }: Props) {
 
   return (
     <div
-      className="bg-light-blue overflow-hidden transition-all duration-500 px-[20px] py-[15px]"
+      className="bg-light-blue overflow-x-hidden overflow-y-auto h-screen transition-all duration-500 px-[20px] pb-[15px]"
       style={{ width: open ? "340px" : "90px" }}
     >
-      <div className="flex flex-col" onClick={() => setOpen((value) => !value)}>
+      <div className="flex flex-col h-full">
         <ChatSidebarHeader open={open} />
 
         {isOpen && (
-          <div className="mt-[40px] px-2">
+          <div className="mt-[100px] px-2 bg-red-30">
             <span className="font-bold block text-light-gray tracking-[1px] mb-[15px]">
               Favorite Chats
             </span>
-            {[0, 1].map((_, index) => (
+            {[0, 1, 2, 3, 4, 5].map((_, index) => (
               <FavoriteChats key={index} />
             ))}
             <span className="font-bold block text-light-gray tracking-[1px] mt-[35px] mb-[15px]">
@@ -52,6 +53,14 @@ export default function ChatSidebar({ open, setOpen }: Props) {
             ))}
           </div>
         )}
+
+        <ExpandCircle
+          className="mt-auto ml-auto cursor-pointer"
+          onClick={() => {
+            setOpenState(!open);
+            console.log(open);
+          }}
+        />
       </div>
     </div>
   );
