@@ -19,6 +19,7 @@ module.exports = {
         gray: "#677487",
         black: "#000000",
         orange: "#FF8015",
+        'max-light-gray': "#8d9fb73d"
       },
       dropShadow: {
         1: "0px 5px 5px rgba(0,0,0,0.07)",

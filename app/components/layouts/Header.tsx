@@ -8,7 +8,7 @@ export const Nav = () => {
   // const pathname = usePathname();
 
   return (
-    <header className="bg-slate-600 h-[60px]">
+    <header className="h-[92px] border-b border-[#8d9fb73d]">
       {/* header */}
        <div className="text-[16px] font-semibold text-[#8D9FB7]">header</div>
       {/* <Link

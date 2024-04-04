@@ -21,7 +21,7 @@ export default function RootLayout({ children }: Props) {
             <Sidebar />
             <div className="">
               <Nav />
-              <main className="h-[calc(100vh-60px)] overflow-auto">
+              <main className="h-[calc(100vh-92px)] overflow-auto">
                 {children}
               </main>
             </div>

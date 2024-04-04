@@ -4,7 +4,7 @@ interface Props {
 }
 export default function ChatSidebarHeader({ open }: Props) {
   return (
-    <div className="grid grid-cols-[1fr_50px] gap-4 pt-[20px] px-[20px] bg-light-blue place-items-end z-10 !justify-end">
+    <div className="grid grid-cols-[1fr_50px] gap-4 pt-[19px] pb-[22px] px-[20px] h-[92px] bg-light-blue place-items-end z-10 !justify-end border-b border-max-light-gray">
       <div
         className={`${
           open && "!w-[232px]"

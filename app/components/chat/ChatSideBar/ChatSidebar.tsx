@@ -36,7 +36,7 @@ export default function ChatSidebar({ open, setOpenState }: Props) {
             <span className="font-bold block text-light-gray tracking-[1px] mb-[15px]">
               Favorite Chats
             </span>
-            {[0, 1, 2, 3].map((_, index) => (
+            {[0, 1].map((_, index) => (
               <FavoriteChats key={index} />
             ))}
             <span className="font-bold block text-light-gray tracking-[1px] mt-[35px] mb-[15px]">
