@@ -1,6 +1,6 @@
 "use client";
 
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ChatSidebarHeader from "./ChatSidebarHeader";
 import FavoriteChats from "./FavoriteChats";
 import MyChats from "./MyChats";
@@ -25,18 +25,18 @@ export default function ChatSidebar({ open, setOpenState }: Props) {
 
   return (
     <div
-      className="bg-light-blue overflow-x-hidden overflow-y-auto h-screen transition-all duration-500 px-[20px] pb-[15px]"
+      className="bg-light-blue overflow-x-hidden overflow-y-auto h-screen transition-all duration-500 pb-[30px]"
       style={{ width: open ? "340px" : "90px" }}
     >
       <div className="flex flex-col h-full">
         <ChatSidebarHeader open={open} />
 
         {isOpen && (
-          <div className="mt-[100px] px-2 bg-red-30">
+          <div className="mt-[40px] px-[28px] bg-red-30 h-[calc(100vh-252px)] overflow-auto">
             <span className="font-bold block text-light-gray tracking-[1px] mb-[15px]">
               Favorite Chats
             </span>
-            {[0, 1, 2, 3, 4, 5].map((_, index) => (
+            {[0, 1, 2, 3].map((_, index) => (
               <FavoriteChats key={index} />
             ))}
             <span className="font-bold block text-light-gray tracking-[1px] mt-[35px] mb-[15px]">
@@ -55,7 +55,6 @@ export default function ChatSidebar({ open, setOpenState }: Props) {
         )}
 
         <ExpandCircle
-          className="mt-auto ml-auto cursor-pointer"
           onClick={() => {
             setOpenState(!open);
             console.log(open);

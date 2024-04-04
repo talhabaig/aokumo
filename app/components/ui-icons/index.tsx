@@ -117,7 +117,7 @@ export function Archive({ ...props }: Icon) {
 
 export function ExpandCircle({ onClick, ...props }: any) {
   return (
-    <div onClick={onClick} className="mt-auto">
+    <div onClick={onClick} className="mt-auto ml-auto cursor-pointer px-[20px]">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width={27.375}
