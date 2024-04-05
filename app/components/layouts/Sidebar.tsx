@@ -1,9 +1,67 @@
 "use client";
 import { useEffect, useState } from "react";
 import ChatSidebar from "../chat/ChatSideBar/ChatSidebar";
-import { Dashboard } from "../ui-icons";
+import {
+  Active,
+  AllAssistant,
+  Aokuma,
+  Chats,
+  DarkMood,
+  Dashboard,
+  Portfolios,
+  Projects,
+  Reports,
+  Teams,
+} from "../ui-icons";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import React from "react";
+import style from "styled-jsx/style";
+
+const sideBarItems = [
+  {
+    id: 1,
+    label: "Dashboard",
+    icon: <Dashboard />,
+    link: "/",
+  },
+  {
+    id: 2,
+    label: "All Assistant",
+    icon: <AllAssistant />,
+    link: "/chat",
+  },
+  {
+    id: 3,
+    label: "All Chats",
+    icon: <Chats />,
+    link: "/all-chats",
+  },
+  {
+    id: 4,
+    label: "Teams",
+    icon: <Teams />,
+    link: "/teams",
+  },
+  {
+    id: 5,
+    label: "Projects",
+    icon: <Projects />,
+    link: "/project",
+  },
+  {
+    id: 6,
+    label: "Portfolios",
+    icon: <Portfolios />,
+    link: "/portfolio",
+  },
+  {
+    id: 7,
+    label: "Reports",
+    icon: <Reports />,
+    link: "/reports",
+  },
+];
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -24,17 +82,73 @@ export default function Sidebar() {
         className="flex flex-col h-full transition-all duration-500"
         style={{ width: !open ? "260px" : "100px" }}
       >
-        <Link href="/" className="text-lg">
-          dashboard
-        </Link>
-        <Link href="/chat" className="text-lg">
-          chat
-        </Link>
-        <Link href="/all-chats" className="text-lg">
-          all chats
-        </Link>
-        <Dashboard />
+        <div className="p-[2.15rem] border-b  border-[#8d9fb73d]">
+          <Aokuma />
+        </div>
+        <div className="flex flex-col justify-between h-full">
+          <div>
+            {sideBarItems?.map((item) => (
+              <div
+                className={`flex gap-4 py-4 px-12 items-center hover:bg-[#E9F7FF] ${
+                  pathname === item.link
+                    ? "bg-[#E9F7FF] border-r border-primary-blue"
+                    : ""
+                } `}
+                key={item.id}
+              >
+                <Link href={item.link} className={`flex gap-4 items-center `}>
+                  {React.cloneElement(item.icon, {
+                    className: `${
+                      pathname === item.link ? " fill-primary-blue " : ""
+                    }`,
+                  })}
+                  <div className="text-[20px] font-bold text-navy-blue">
+                    {item.label}
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-4 py-5 px-8 border-t  border-[#8d9fb73d]  relative">
+            <div className="absolute bottom-[8rem] left-[50px]">
+              <DarkMood />
+            </div>
+            <div className="relative">
+              <div className="bg-slate-300 rounded-full w-[39px] h-[39px] overflow-hidden ">
+                <img
+                  className="rounded-full w-full h-full object-cover"
+                  src={`https://source.unsplash.com/500x500/?working-man,working-woman`}
+                  alt="image"
+                />
+              </div>
+              <div className="absolute bottom-[1px] left-[31px] ">
+                <Active />
+              </div>
+            </div>
+            <span className="text-[18px] font-bold text-navy-blue">
+              joana Doe
+            </span>
+          </div>
+        </div>
+
+        {/* <div
+          className="flex flex-col h-full transition-all duration-500"
+          style={{ width: !open ? "260px" : "100px" }}
+        >
+          <Link href="/" className="text-lg">
+            dashboard
+          </Link>
+          <Link href="/chat" className="text-lg">
+            chat
+          </Link>
+          <Link href="/all-chats" className="text-lg">
+            all chats
+          </Link>
+          <Dashboard />
+        </div> */}
       </div>
+
       {isChatPage && <ChatSidebar open={open} setOpenState={setOpenState} />}
     </div>
   );
