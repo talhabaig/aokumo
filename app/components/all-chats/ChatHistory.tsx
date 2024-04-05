@@ -6,14 +6,14 @@ const ChatHistoryList = [
     heading: "Lorem ipsum dolor sit amet dolor",
     time: "8 min ago",
     paragraph:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit iure reiciendis",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit iure reiciendisLorem ipsum dolor sit amet consectetur adipisicing elit. Fugit iure reiciendisLorem ipsum dolor sit amet consectetur adipisicing elit. Fugit iure reiciendisLorem ipsum dolor sit amet consectetur adipisicing elit. Fugit iure reiciendisLorem ipsum dolor sit amet consectetur adipisicing elit. Fugit iure reiciendisLorem ipsum dolor sit amet consectetur adipisicing elit. Fugit iure reiciendisLorem ipsum dolor sit amet consectetur adipisicing elit. Fugit iure reiciendis",
   },
   {
     id: 2,
     heading: "Lorem ipsum dolor sit amet solor",
     time: "18 min ago",
     paragraph:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit iure reiciendis",
+      "Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit iure reiciendisLorem ipsum dolor sit amet consectetur adipisicing elit. Fugit iure reiciendisLorem ipsum dolor sit amet consectetur adipisicing elit. Fugit iure reiciendisLorem ipsum dolor sit amet consectetur adipisicing elit. Fugit iure reiciendisLorem ipsum dolor sit amet consectetur adipisicing elit. Fugit iure reiciendisLorem ipsum dolor sit amet consectetur adipisicing elit. Fugit iure reiciendisLorem ipsum dolor sit amet consectetur adipisicing elit. Fugit iure reiciendis adipisicing elit. Fugit iure reiciendis ",
   },
   {
     id: 3,
@@ -37,7 +37,7 @@ const ChatHistory = () => {
       {ChatHistoryList.map((item, index) => (
         <div
           key={index}
-          className="flex items-center gap-[14px] cursor-pointer my-[36px]"
+          className="flex items-start gap-[20px] border-b-[0.5px] border-b-[#8d9fb73d] pb-[8px] cursor-pointer my-[36px]"
         >
           <div className="bg-slate-300 rounded-full w-[39px] h-[39px] overflow-hidden">
             <img
@@ -53,9 +53,11 @@ const ChatHistory = () => {
               </span>
               <span className="text-[13px]">{item.time}</span>
             </div>
-            <span className="text-[16px] font-normal text-navy-blue leading-[24px]">
-              {item.paragraph}
-            </span>
+            <div className="text-container max-w-[600px] overflow-hidden">
+              <span className="chat-history-para text-[16px] font-normal text-navy-blue leading-[24px]">
+                {item.paragraph}
+              </span>
+            </div>
           </div>
         </div>
       ))}
