@@ -217,7 +217,7 @@ export function Archive({ ...props }: Icon) {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={15}
-      height={15}
+      height={16}
       viewBox="395.283 374 14.717 14.717"
       {...props}
     >
@@ -488,6 +488,24 @@ export function Active({ ...props }: Icon) {
         fill="#35d435"
         fillRule="evenodd"
         data-name="Ellipse 6"
+      />
+    </svg>
+  );
+}
+
+export function Send({ ...props }: Icon) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={22}
+      height={20}
+      viewBox="0 0 22 20"
+      fill="none"
+      {...props}
+    >
+      <path
+        d="M20.89 11.259L1.93 19.253a1.217 1.217 0 01-1.166-.106 1.137 1.137 0 01-.553-1.02V2.113a1.136 1.136 0 01.553-1.02A1.218 1.218 0 011.93.987l18.96 7.994a1.16 1.16 0 01.758 1.139 1.16 1.16 0 01-.758 1.139zM2.248 16.912l16.1-6.792-16.1-6.792v5.016l7.367 1.776-7.367 1.776v5.016z"
+        fill="#fff"
       />
     </svg>
   );

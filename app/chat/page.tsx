@@ -1,8 +1,14 @@
 import ChatBox from "../components/chat/ChatBox";
+import Chat from "../components/chat/Chat";
 
 export default function page() {
   return (
-    <div className="bg-red- h-full flex">
+    <div className="flex flex-col">
+      <div className="h-[calc(100vh-315px)] overflow-auto px-[20px]">
+        <div className="w-full max-w-[880px] mx-auto flex flex-col gap- pt-7">
+         <Chat />
+        </div>
+      </div>
       <ChatBox />
     </div>
   );

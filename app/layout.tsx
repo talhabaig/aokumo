@@ -1,4 +1,3 @@
-import Image from "next/image";
 import type { ReactNode } from "react";
 import { StoreProvider } from "./StoreProvider";
 import { Nav } from "./components/layouts/Header";
@@ -19,7 +18,7 @@ export default function RootLayout({ children }: Props) {
         <body>
           <section className="grid grid-cols-[auto_1fr] h-screen">
             <Sidebar />
-            <div className="">
+            <div>
               <Nav />
               <main className="h-[calc(100vh-92px)] overflow-auto">
                 {children}
