@@ -85,11 +85,11 @@ export default function Sidebar() {
         <div className="p-[2.15rem] border-b  border-[#8d9fb73d]">
           <Aokuma />
         </div>
-        <div className="flex flex-col justify-between h-full">
-          <div>
+        <div className="flex flex-col justify-between h-full ">
+          <div className="h-[calc(100vh-241px)] overflow-auto">
             {sideBarItems?.map((item) => (
               <div
-                className={`flex gap-4 py-4 px-12 items-center hover:bg-[#E9F7FF] ${
+                className={`flex gap-4 py-4 px-8 cursor-pointer whitespace-nowrap overflow-hidden overflow-ellipsis items-center hover:bg-[#E9F7FF] ${
                   pathname === item.link
                     ? "bg-[#E9F7FF] border-r border-primary-blue"
                     : ""
@@ -99,36 +99,44 @@ export default function Sidebar() {
                 <Link href={item.link} className={`flex gap-4 items-center `}>
                   {React.cloneElement(item.icon, {
                     className: `${
-                      pathname === item.link ? " fill-primary-blue " : ""
+                      pathname === item.link
+                        ? "stroke-white fill-primary-blue "
+                        : ""
                     }`,
                   })}
-                  <div className="text-[20px] font-bold text-navy-blue">
-                    {item.label}
-                  </div>
+                  {!open && (
+                    <div className="text-[18px] font-bold text-navy-blue">
+                      {item.label}
+                    </div>
+                  )}
                 </Link>
               </div>
             ))}
           </div>
+          <div>
+            <div className="px-8 pb-6 ">
+              <div className="bg-[#F3FAFE] h-[45px] w-[45px]  rounded-full flex items-center justify-center">
+                <DarkMood />
+              </div>
+            </div>
 
-          <div className="flex items-center gap-4 py-5 px-8 border-t  border-[#8d9fb73d]  relative">
-            <div className="absolute bottom-[8rem] left-[50px]">
-              <DarkMood />
-            </div>
-            <div className="relative">
-              <div className="bg-slate-300 rounded-full w-[39px] h-[39px] overflow-hidden ">
-                <img
-                  className="rounded-full w-full h-full object-cover"
-                  src={`https://source.unsplash.com/500x500/?working-man,working-woman`}
-                  alt="image"
-                />
+            <div className="flex items-center gap-4 py-5 px-8 border-t  border-[#8d9fb73d] ">
+              <div className="relative">
+                <div className="bg-slate-300 rounded-full w-[39px] h-[39px] overflow-hidden ">
+                  <img
+                    className="rounded-full w-full h-full object-cover"
+                    src={`https://source.unsplash.com/500x500/?working-man,working-woman`}
+                    alt="image"
+                  />
+                </div>
+                <div className="absolute bottom-[1px] left-[31px] ">
+                  <Active />
+                </div>
               </div>
-              <div className="absolute bottom-[1px] left-[31px] ">
-                <Active />
-              </div>
+              <span className="text-[18px] font-bold text-navy-blue whitespace-nowrap overflow-hidden overflow-ellipsis">
+                joana Doe
+              </span>
             </div>
-            <span className="text-[18px] font-bold text-navy-blue">
-              joana Doe
-            </span>
           </div>
         </div>
 
