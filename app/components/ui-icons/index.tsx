@@ -101,7 +101,7 @@ export function Archive({ ...props }: Icon) {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={15}
-      height={15}
+      height={16}
       viewBox="395.283 374 14.717 14.717"
       {...props}
     >

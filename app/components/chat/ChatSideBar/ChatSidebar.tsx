@@ -32,7 +32,7 @@ export default function ChatSidebar({ open, setOpenState }: Props) {
         <ChatSidebarHeader open={open} />
 
         {isOpen && (
-          <div className="mt-[40px] px-[28px] bg-red-30 h-[calc(100vh-252px)] overflow-auto">
+          <div className="pt-[40px] px-[28px] bg-red-30 h-[calc(100vh-252px)] overflow-auto">
             <span className="font-bold block text-light-gray tracking-[1px] mb-[15px]">
               Favorite Chats
             </span>
