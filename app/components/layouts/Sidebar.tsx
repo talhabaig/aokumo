@@ -98,14 +98,14 @@ export default function Sidebar() {
             {sideBarItems?.map((item) => (
               <Link
                 href={item.link}
-                className={`flex gap-4 py-4 px-8 cursor-pointer whitespace-nowrap overflow-hidden overflow-ellipsis items-center hover:bg-[#E9F7FF] ${
+                className={`flex min-h-[59px] gap-4 py-4 px-8 cursor-pointer whitespace-nowrap overflow-hidden overflow-ellipsis items-center hover:bg-[#E9F7FF] ${
                   pathname === item.link
                     ? "bg-[#E9F7FF] border-r border-primary-blue"
                     : ""
                 } `}
                 key={item.id}
               >
-                <div className={`flex gap-4 items-center `}>
+                <div className={`flex gap-x-4 items-center `}>
                   {React.cloneElement(item.icon, {
                     className: `${
                       pathname === item.link
@@ -123,13 +123,13 @@ export default function Sidebar() {
             ))}
           </div>
           <div>
-            <div className="px-8 pb-6 ">
+            <div className="px-8 pb-6 h-[69px] ">
               <div className="bg-[#F3FAFE] h-[45px] w-[45px]  rounded-full flex items-center justify-center">
                 <DarkMood />
               </div>
             </div>
 
-            <div className="flex items-center gap-4 py-5 px-8 border-t  border-[#8d9fb73d] ">
+            <div className="flex items-center gap-4 py-5 px-8 border-t h-[80px] border-[#8d9fb73d] ">
               <div className="relative">
                 <div className="bg-slate-300 rounded-full w-[39px] h-[39px] overflow-hidden ">
                   <img
