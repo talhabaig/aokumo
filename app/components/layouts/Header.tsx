@@ -41,8 +41,8 @@ export const Nav = () => {
         Quotes
       </Link> */}
 
-      <div className="flex gap-8 justify-end p-5 items-center">
-        <div className="flex gap-3">
+      <div className="flex gap-[2.6rem] justify-end p-5 items-center">
+        <div className="flex gap-6 cursor-pointer">
           <div>
             <Language />
           </div>
