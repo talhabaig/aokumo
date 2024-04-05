@@ -6,11 +6,11 @@ const SearchBar = () => {
   return (
     <div>
       <div>
-        <ul className="flex items-center justify-center">
+        <ul className="flex justify-center border-b-[0.5px] gap-12 hover:font-bold border-b-[#8d9fb73d] p-[24px] w-full mb-5">
           <li>
             <Link
-              href="/"
-              className="text-[18px] inline-block p-4 font-normal hover:font-bold hover:border-b-2 visited:text-navy-blue"
+              href="//"
+              className="text-[18px] cool pb-6 font-medium  hover:border-b-2 border-[#22A3F1] visited:text-navy-blue"
             >
               All Chats
             </Link>
@@ -18,7 +18,7 @@ const SearchBar = () => {
           <li>
             <Link
               href="/"
-              className="text-[18px] inline-block p-4 font-normal hover:font-bold hover:border-b-2 visited:text-navy-blue"
+              className="text-[18px] pb-6 font-medium hover:border-b-2 border-[#22A3F1] visited:text-navy-blue"
             >
               Team Chats
             </Link>
@@ -26,7 +26,7 @@ const SearchBar = () => {
           <li>
             <Link
               href="/"
-              className="text-[18px] inline-block p-4 font-normal hover:border-b-2 hover:font-bold visited:text-navy-blue"
+              className="text-[18px] pb-6 font-medium hover:border-b-2  border-[#22A3F1] visited:text-navy-blue"
             >
               AI Chats
             </Link>
@@ -36,12 +36,12 @@ const SearchBar = () => {
 
       <div className="pt-2 relative mb-6">
         <input
-          className="border-[0.5px] w-[100%] border-[#8d9fb7] p-[20px_30px_20px_40px] rounded-[15px] text-[20px] font-medium text-[#8d9fb7] focus:outline"
-          type="search"
+          className="border-[0.5px] w-full border-[#8d9fb73d]  bg-white  drop-shadow-1 p-[20px_70px_20px_40px] rounded-[15px] text-[20px] font-medium text-[#8d9fb7]  outline-none  flex-1"
+          type="text"
           placeholder="Search Chats"
         />
         <div>
-          <Search className="w-[24px] h-[24px] absolute right-[30px] top-[33px] " />
+          <Search className="w-[24px] h-[24px] absolute right-[30px] top-[33px] cursor-pointer" />
         </div>
       </div>
     </div>
