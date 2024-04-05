@@ -41,8 +41,8 @@ export const Nav = () => {
         Quotes
       </Link> */}
 
-      <div className="flex gap-6 justify-end p-5 items-center">
-        <div className="flex gap-4">
+      <div className="flex gap-8 justify-end p-5 items-center">
+        <div className="flex gap-3">
           <div>
             <Language />
           </div>
@@ -55,7 +55,7 @@ export const Nav = () => {
           </div>
         </div>
 
-        <div className="flex items-center  gap-3 text-center text-[18px] font-bold  cursor-pointer  text-white bg-primary-blue   p-[12px_16px] rounded-[16px] border whitespace-nowrap ">
+        <div className="flex items-center  gap-3 text-center text-[14px] font-bold  cursor-pointer  text-white bg-primary-blue   p-[10px_10px] rounded-[14px] border whitespace-nowrap ">
           Share Chat
           <div>
             <ShareButton />

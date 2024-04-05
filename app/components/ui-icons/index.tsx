@@ -348,8 +348,8 @@ export function ShareButton({ ...props }: Icon) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={21.163}
-      height={15.643}
+      width={20}
+      height={15}
       viewBox="137.318 16 21.163 15.643"
       {...props}
     >
@@ -459,8 +459,8 @@ export function DarkMood({ ...props }: Icon) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={16.599}
-      height={16.576}
+      width={15}
+      height={15}
       viewBox="47 922 16.599 16.576"
       {...props}
     >
