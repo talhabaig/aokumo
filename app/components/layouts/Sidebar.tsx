@@ -5,6 +5,7 @@ import {
   Active,
   AllAssistant,
   Aokuma,
+  AokumoLogo,
   Chats,
   DarkMood,
   Dashboard,
@@ -82,13 +83,21 @@ export default function Sidebar() {
         className="flex flex-col h-full transition-all duration-500"
         style={{ width: !open ? "260px" : "100px" }}
       >
-        <div className="p-[2.15rem] border-b  border-[#8d9fb73d]">
-          <Aokuma />
-        </div>
+        {open ? (
+          <div className="py-[28px] border-b px-4  border-[#8d9fb73d]">
+            <AokumoLogo width="36px" height="36px" />
+          </div>
+        ) : (
+          <div className="py-[2.15rem] px-4  border-b  border-[#8d9fb73d]">
+            <Aokuma />
+          </div>
+        )}
+
         <div className="flex flex-col justify-between h-full ">
           <div className="h-[calc(100vh-241px)] overflow-auto">
             {sideBarItems?.map((item) => (
-              <div
+              <Link
+                href={item.link}
                 className={`flex gap-4 py-4 px-8 cursor-pointer whitespace-nowrap overflow-hidden overflow-ellipsis items-center hover:bg-[#E9F7FF] ${
                   pathname === item.link
                     ? "bg-[#E9F7FF] border-r border-primary-blue"
@@ -96,7 +105,7 @@ export default function Sidebar() {
                 } `}
                 key={item.id}
               >
-                <Link href={item.link} className={`flex gap-4 items-center `}>
+                <div className={`flex gap-4 items-center `}>
                   {React.cloneElement(item.icon, {
                     className: `${
                       pathname === item.link
@@ -109,8 +118,8 @@ export default function Sidebar() {
                       {item.label}
                     </div>
                   )}
-                </Link>
-              </div>
+                </div>
+              </Link>
             ))}
           </div>
           <div>
