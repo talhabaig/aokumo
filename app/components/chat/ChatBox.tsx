@@ -1,7 +1,10 @@
 "use client";
 import { EditSquare, Plus, Send } from "../ui-icons";
 import { useRef } from "react";
+import { sendMsg } from "@/lib/features/chat/chatSlice";
+import { useAppDispatch } from "@/lib/hooks";
 export default function ChatBox() {
+  const dispatch = useAppDispatch();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const insertCode = () => {
@@ -16,6 +19,20 @@ export default function ChatBox() {
       textarea.setSelectionRange(cursorPosition, cursorPosition);
     }
   };
+
+  const send = async () => {
+    const msg = textareaRef.current?.value || "";
+    if (textareaRef.current) {
+      textareaRef.current.value = "";
+    }
+    try {
+      dispatch(sendMsg(msg));
+    } catch (err) {
+      console.log(err);
+    }
+    console.log();
+  };
+
   return (
     <div className="px-[20px]">
       <div className="flex flex-col w-full max-w-[900px] h-[180px] pl-[60px] pr-[90px] pt-[25px] pb-[20px] mt-auto mb-[40px] mx-auto border border-[#8d9fb73d] bg-white rounded-[15px] drop-shadow-1">
@@ -41,7 +58,10 @@ export default function ChatBox() {
             <Plus /> Insert Code
           </button>
         </div>
-        <div className="cursor-pointer absolute right-[20px] bottom-[20px] w-[50px] h-[50px] flex items-center justify-center rounded-full bg-primary-blue">
+        <div
+          onClick={send}
+          className="cursor-pointer absolute right-[20px] bottom-[20px] w-[50px] h-[50px] flex items-center justify-center rounded-full bg-primary-blue"
+        >
           <Send />
         </div>
       </div>

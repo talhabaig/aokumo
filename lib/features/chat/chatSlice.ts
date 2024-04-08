@@ -1,89 +1,169 @@
-import { createAppSlice } from "@/lib/createAppSlice";
-import type { AppThunk } from "@/lib/store";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import { fetchCount } from "./chatAPI";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+import { sendMessageAndStream } from "./chatAPI";
+import { AppThunk } from "@/lib/store";
 
-export interface chatSliceState {
-    value: number;
-    status: "idle" | "loading" | "failed";
-}
-
-const initialState: chatSliceState = {
-    value: 0,
-    status: "idle",
+const initialState: any = {
+  chats: [],
+  teamChats: [],
+  favoriteChats: [],
+  favChat: [],
+  favTeamChat: [],
+  profileUser: undefined,
+  activeChat: {},
+  chat: [],
+  lastMessage: "",
 };
 
-// If you are not using async thunks you can use the standalone `createSlice`.
-export const chatSlice = createAppSlice({
-    name: "chat",
-    // `createSlice` will infer the state type from the `initialState` argument
-    initialState,
-    // The `reducers` field lets us define reducers and generate associated actions
-    reducers: (create) => ({
-        increment: create.reducer((state) => {
-            // Redux Toolkit allows us to write "mutating" logic in reducers. It
-            // doesn't actually mutate the state because it uses the Immer library,
-            // which detects changes to a "draft state" and produces a brand new
-            // immutable state based off those changes
-            state.value += 1;
-        }),
-        decrement: create.reducer((state) => {
-            state.value -= 1;
-        }),
-        // Use the `PayloadAction` type to declare the contents of `action.payload`
-        incrementByAmount: create.reducer(
-            (state, action: PayloadAction<number>) => {
-                state.value += action.payload;
-            },
-        ),
-        // The function below is called a thunk and allows us to perform async logic. It
-        // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
-        // will call the thunk with the `dispatch` function as the first argument. Async
-        // code can then be executed and other actions can be dispatched. Thunks are
-        // typically used to make async requests.
-        incrementAsync: create.asyncThunk(
-            async (amount: number) => {
-                const response = await fetchCount(amount);
-                // The value we return becomes the `fulfilled` action payload
-                return response.data;
-            },
-            {
-                pending: (state) => {
-                    state.status = "loading";
-                },
-                fulfilled: (state, action) => {
-                    state.status = "idle";
-                    state.value += action.payload;
-                },
-                rejected: (state) => {
-                    state.status = "failed";
-                },
-            },
-        ),
-    }),
-    // You can define your selectors here. These selectors receive the slice
-    // state as their first argument.
-    selectors: {
-        selectCount: (counter) => counter.value,
-        selectStatus: (counter) => counter.status,
+export const chatSlice = createSlice({
+  name: "chat",
+  initialState,
+  reducers: {
+    setChatsAndContacts: (state, action) => {
+      const { chats, teamChats } = action.payload;
+      state.chats = chats;
+      state.teamChats = teamChats;
+      state.favoriteChats = [...state.favChat, ...state.favTeamChat];
     },
+    addToFavorite: (state, action) => {
+      const { id } = action.payload;
+      state.teamChats = state.teamChats.map((chat: any) =>
+        chat.id === id ? { ...chat, favorite: !chat.favorite } : chat
+      );
+      state.chats = state.chats.map((chat: any) =>
+        chat.id === id ? { ...chat, favorite: !chat.favorite } : chat
+      );
+      state.favoriteChats = [...state.favChat, ...state.favTeamChat];
+    },
+    addMessage: (state, action) => {
+      const { role, message } = action.payload;
+      if (
+        state.chat.length > 0 &&
+        state.chat[state.chat.length - 1].role === "assistant"
+      ) {
+        state.chat[state.chat.length - 1].message += message;
+      } else {
+        state.chat.push({ id: 0, role, message });
+      }
+    },
+    setActiveChat: (state, action) => {
+      const { activeChat, profileUser, chat, lastMessage } = action.payload;
+      state.activeChat = activeChat;
+      state.profileUser = profileUser;
+      state.chat = chat;
+      state.lastMessage = lastMessage;
+    },
+    newThread: (state) => {
+      state.activeChat = {};
+      state.chat = [];
+    },
+    setLastMessage: (state, action) => {
+      state.lastMessage = action.payload;
+    },
+  },
+  extraReducers: (builder) => {
+    // Add extra reducers for async actions if needed
+  },
+  selectors: {
+    selectChat: (state) => state.chat,
+    selectTeamChats: (state) => state.chat.teamChats,
+    selectFavoriteChats: (state) => state.chat.favoriteChats,
+    selectActiveChat: (state) => state.chat.activeChat,
+    selectLastMessage: (state) => state.chat.lastMessage,
+  },
 });
 
-// Action creators are generated for each case reducer function.
-export const { decrement, increment, incrementByAmount, incrementAsync } =
-    chatSlice.actions;
+export const {
+  selectChat,
+  selectTeamChats,
+  selectFavoriteChats,
+  selectActiveChat,
+  selectLastMessage,
+} = chatSlice.selectors;
 
-// Selectors returned by `slice.selectors` take the root state as their first argument.
-export const { selectCount, selectStatus } = chatSlice.selectors;
+export const {
+  setChatsAndContacts,
+  addToFavorite,
+  setActiveChat,
+  newThread,
+  setLastMessage,
+  addMessage,
+} = chatSlice.actions;
 
-// We can also write thunks by hand, which may contain both sync and async logic.
-// Here's an example of conditionally dispatching actions based on current state.
-export const incrementIfOdd =
-    (amount: number): AppThunk =>
-        (dispatch, getState) => {
-            const currentValue = selectCount(getState());
+export const fetchChatsAndContacts =
+  (q: string): AppThunk =>
+  async (dispatch) => {
+    try {
+      // Fetch chats and teamChats data
+      // Replace the following lines with actual API calls
+      const chats: any = [];
+      const teamChats: any = [];
+      dispatch(setChatsAndContacts({ chats, teamChats }));
+    } catch (error) {
+      console.error("Error fetching chats and contacts:", error);
+    }
+  };
 
-            if (currentValue % 2 === 1 || currentValue % 2 === -1) {
-                dispatch(incrementByAmount(amount));
-            }
-        };
+export const getChat =
+  (userId: any): AppThunk =>
+  async (dispatch) => {
+    try {
+      // Fetch chat data for the given userId
+      // Replace the following lines with actual API calls
+      const activeChat: any = {};
+      const profileUser: any = activeChat?.fullName;
+      const chat = activeChat?.chat;
+      const lastMessage = activeChat?.lastMessage;
+      dispatch(setActiveChat({ activeChat, profileUser, chat, lastMessage }));
+    } catch (error) {
+      console.error("Error fetching chat:", error);
+    }
+  };
+
+export const sendMsg =
+  (message: string): AppThunk =>
+  async (dispatch) => {
+    try {
+      dispatch(setLastMessage(message));
+      dispatch(addMessage({ id: 0, role: "user", message }));
+
+      const postData = {
+        model: "srebot",
+        messages: [
+          {
+            role: "user",
+            content: message,
+          },
+        ],
+        stream: true,
+      };
+
+      await sendMessageAndStream(
+        "https://srebot.aokumo.beta.xpressai.cloud/chat/completions",
+        postData,
+        async (message, done) => {
+          if (message !== "" && !done) {
+            dispatch(addMessage({ id: 0, role: "assistant", message: "" }));
+          }
+        }
+      );
+    } catch (error) {
+      console.error("Error sending message:", error);
+    }
+  };
+
+export const updateLastMessage =
+  (message: any): AppThunk =>
+  async (dispatch) => {
+    try {
+      dispatch(setLastMessage((prev: any) => prev + message));
+    } catch (error) {
+      console.error("Error updating last message:", error);
+    }
+  };
+
+// export const selectChats = (state: any) => state.chat.chats;
+// export const selectTeamChats = (state: any) => state.chat.teamChats;
+// export const selectFavoriteChats = (state: any) => state.chat.favoriteChats;
+// export const selectActiveChat = (state: any) => state.chat.activeChat;
+// export const selectLastMessage = (state: any) => state.chat.lastMessage;

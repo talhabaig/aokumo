@@ -17,7 +17,6 @@ import {
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import React from "react";
-import style from "styled-jsx/style";
 
 const sideBarItems = [
   {
@@ -68,7 +67,7 @@ export default function Sidebar() {
   const pathname = usePathname();
   const isChatPage = pathname.startsWith("/chat");
 
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   function setOpenState(state: boolean) {
     setOpen(state);
@@ -83,15 +82,13 @@ export default function Sidebar() {
         className="flex flex-col h-full transition-all duration-500"
         style={{ width: !open ? "260px" : "100px" }}
       >
-        {open ? (
-          <div className="py-[28px] border-b px-4  border-[#8d9fb73d]">
-            <AokumoLogo width="36px" height="36px" />
-          </div>
-        ) : (
-          <div className="py-[2.15rem] px-4  border-b  border-[#8d9fb73d]">
-            <Aokuma />
-          </div>
-        )}
+        <div className="px-[2rem] border-b min-h-[92px] h-[92px]  border-[#8d9fb73d]">
+          {open ? (
+            <AokumoLogo width="36px" height="36px" className="mt-[2rem]" />
+          ) : (
+            <Aokuma height={36} className="mt-[2rem]" />
+          )}
+        </div>
 
         <div className="flex flex-col justify-between h-full ">
           <div className="h-[calc(100vh-241px)] overflow-auto">
@@ -123,15 +120,15 @@ export default function Sidebar() {
             ))}
           </div>
           <div>
-            <div className="px-8 pb-6 h-[69px] ">
+            <div className="pl-7 pr-8 pb-6 h-[69px] ">
               <div className="bg-[#F3FAFE] h-[45px] w-[45px]  rounded-full flex items-center justify-center">
                 <DarkMood />
               </div>
             </div>
 
-            <div className="flex items-center gap-4 py-5 px-8 border-t h-[80px] border-[#8d9fb73d] ">
+            <div className="flex items-center gap-4 py-5 pl-7 pr-8 border-t h-[80px] border-[#8d9fb73d] ">
               <div className="relative">
-                <div className="bg-slate-300 rounded-full w-[39px] h-[39px] overflow-hidden ">
+                <div className="bg-slate-300 rounded-full w-[39px] h-[39px] overflow-hidden">
                   <img
                     className="rounded-full w-full h-full object-cover"
                     src={`https://source.unsplash.com/500x500/?working-man,working-woman`}
@@ -148,22 +145,6 @@ export default function Sidebar() {
             </div>
           </div>
         </div>
-
-        {/* <div
-          className="flex flex-col h-full transition-all duration-500"
-          style={{ width: !open ? "260px" : "100px" }}
-        >
-          <Link href="/" className="text-lg">
-            dashboard
-          </Link>
-          <Link href="/chat" className="text-lg">
-            chat
-          </Link>
-          <Link href="/all-chats" className="text-lg">
-            all chats
-          </Link>
-          <Dashboard />
-        </div> */}
       </div>
 
       {isChatPage && <ChatSidebar open={open} setOpenState={setOpenState} />}
