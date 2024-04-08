@@ -3,6 +3,7 @@
 import { selectChat } from "@/lib/features/chat/chatSlice";
 import { useAppSelector } from "@/lib/hooks";
 import { Fragment } from "react";
+import { CodeBlock } from "../common/CodeBlock";
 interface Chat {
   id: number;
   role: "assistant" | "user";
@@ -23,7 +24,32 @@ export default function Chat() {
   );
 }
 
-export function UserMessage({ message }: { message: string }) {
+function UserMessage({ message }: { message: string }) {
+  return (
+    <>
+      {!message.includes("```") ? (
+        <SimpleMessage message={message} />
+      ) : (
+        message
+          .split(/(```[^`]+```)/)
+          .filter((str: string) => str.trim() !== "")
+          .map((data) =>
+            data.includes("```") ? (
+              <CodeBlock
+                key={Math.random()}
+                language={"js" || ""}
+                value={data.replace(/```/g, "")}
+              />
+            ) : (
+              <SimpleMessage message={data} />
+            )
+          )
+      )}
+    </>
+  );
+}
+
+function SimpleMessage({ message }: { message: string }) {
   return (
     <div className="mb-5 px-[28px] py-5 rounded-[15px] bg-light-blue flex items-start gap-5">
       <div className="bg-slate-300 rounded-full w-[50px] h-[50px] overflow-hidden drop-shadow-4">
