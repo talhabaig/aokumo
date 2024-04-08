@@ -5,11 +5,13 @@ import FilterChats from "../components/all-chats/FilterChats";
 
 export default function AllChats() {
   return (
-    <div className="bg-[#F0F9FE] px-[60px] py-[40px]">
-      <div className="bg-white px-10 py-5">
-        <AllChatSearchBar />
-        <FilterChats />
-        <ChatHistory />
+    <div className="bg-[#F0F9FE]">
+      <div className="max-w-[1506px] mx-auto p-11">
+        <div className="bg-white py-12">
+          <AllChatSearchBar />
+          <FilterChats />
+          <ChatHistory />
+        </div>
       </div>
     </div>
   );

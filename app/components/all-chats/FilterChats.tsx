@@ -33,11 +33,11 @@ const FilterChatsList = [
 
 const FilterChats = () => {
   return (
-    <div>
-    <div className="flex flex-wrap overflow-auto gap-3 mx-auto border-b-[0.5px] border-b-[#8d9fb73d] pb-[20px]">
+    <div className="px-10">
+    <div className="flex flex-wrap gap-3 mx-auto border-b-[0.5px] border-b-[#8d9fb73d] pb-[30px] ">
       {FilterChatsList.map((item, index) => (
         <div key={index}>
-          <button className="text-center text-[16px] drop-shadow-2 text-primary-blue font-bold p-[3px_36px] rounded-full border whitespace-nowrap border-primary-blue hover:bg-primary-blue hover:text-white">
+          <button className="filter-chat-shadow transition-all text-center text-[16px] text-primary-blue font-bold p-[3px_36px] rounded-full border whitespace-nowrap border-primary-blue hover:bg-primary-blue hover:text-white drop-shadow-2">
             {item.text}
           </button>
         </div>
