@@ -29,15 +29,36 @@ const ChatHistoryList = [
     paragraph:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit iure reiciendis",
   },
+  {
+    id: 5,
+    heading: "Lorem ipsum dolor sit amet color",
+    time: "30 min ago",
+    paragraph:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit iure reiciendis",
+  },
+  {
+    id: 6,
+    heading: "Lorem ipsum dolor sit amet color",
+    time: "30 min ago",
+    paragraph:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit iure reiciendis",
+  },
+  {
+    id: 7,
+    heading: "Lorem ipsum dolor sit amet color",
+    time: "30 min ago",
+    paragraph:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit iure reiciendis",
+  },
 ];
 
 const ChatHistory = () => {
   return (
-    <div>
+    <div className="max-h-[400px] overflow-auto px-10">
       {ChatHistoryList.map((item, index) => (
         <div
           key={index}
-          className="flex items-start gap-[20px] border-b-[0.5px] border-b-[#8d9fb73d] pb-[8px] cursor-pointer my-[36px]"
+          className="flex items-start gap-[20px] border-b-[0.5px] border-b-[#8d9fb73d] pt-8 pb-3 cursor-pointer"
         >
           <div className="bg-slate-300 rounded-full w-[39px] h-[39px] overflow-hidden">
             <img
