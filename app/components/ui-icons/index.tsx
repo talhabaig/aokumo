@@ -802,3 +802,23 @@ export function Download({ ...props }: Icon) {
     </svg>
   );
 }
+export function Tick({ ...props }: Icon) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="10.896"
+      height="7.213"
+      viewBox="845.518 289.839 10.896 7.213"
+      {...props}
+    >
+      <path
+        d="m846.019 293.87 3.682 3.682 7.213-7.213"
+        stroke-linejoin="round"
+        stroke-linecap="round"
+        stroke="#fff"
+        fill="White"
+        data-name="Path 4"
+      />
+    </svg>
+  );
+}
